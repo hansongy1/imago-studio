@@ -1,0 +1,170 @@
+{# mode_001.html #}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>닮은꼴 찾기 - Image Studio</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <a href="/" class="back-button">← 홈으로</a>
+            <h1>나와 닮은 동물 찾기</h1>
+            <p class="subtitle">나는 고양이상? 강아지상?</p>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- 업로드 섹션 -->
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-box">
+                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                    <div class="upload-placeholder" onclick="document.getElementById('imageInput').click()">
+                        <div class="upload-icon">📸</div>
+                        <p class="upload-text">클릭하여 사진 업로드</p>
+                        <p class="upload-hint">얼굴이 잘 보이는 정면 사진을 업로드 해주세요!</p>
+                    </div>
+                    <img id="previewImage" style="display: none;">
+                </div>
+                <button id="analyzeButton" class="analyze-button" style="display: none;">
+                    분석 시작! 🚀
+                </button>
+            </div>
+
+            <!-- 로딩 -->
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loader"></div>
+                <p class="loading-text">AI가 열심히 분석 중이에요...</p>
+                <p class="loading-subtext">잠시만 기다려주세요 ☕</p>
+            </div>
+
+            <!-- 결과 섹션 -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <!-- 성격 분석 -->
+                <div class="personality-card">
+                    <h2>✨ 당신의 이미지</h2>
+                    <div class="personality-content">
+                        <div class="personality-main">
+                            <span class="personality-trait" id="personalityTrait"></span>
+                            <span class="personality-score" id="personalityScore"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 닮은꼴 Top 3 -->
+                <h2 class="result-title" id="resultTitle">🏆 당신과 닮은 동물들</h2>
+                <div class="similarity-results" id="similarityResults">
+                    <!-- JavaScript로 동적 생성 -->
+                </div>
+
+                <button class="retry-button" onclick="location.reload()">
+                    다시 분석하기 🔄
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        // 이미지 미리보기
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('previewImage');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    document.querySelector('.upload-placeholder').style.display = 'none';
+                    document.getElementById('analyzeButton').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 분석 시작
+        document.getElementById('analyzeButton').addEventListener('click', async function() {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('이미지를 선택해주세요!');
+                return;
+            }
+
+            // UI 전환
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('loadingSection').style.display = 'block';
+
+            // FormData 생성
+            const formData = new FormData();
+            formData.append('image', file);
+
+            try {
+                const response = await fetch('/analyze-similarity', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // 로딩 숨기기
+                    document.getElementById('loadingSection').style.display = 'none';
+                    
+                    // 결과 표시
+                    displayResults(data);
+                    document.getElementById('resultSection').style.display = 'block';
+                } else {
+                    alert('오류: ' + data.error);
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('분석 중 오류가 발생했습니다: ' + error.message);
+                location.reload();
+            }
+        });
+
+        function displayResults(data) {
+            // 성격 분석 표시
+            const trait = data.personality.main_trait;
+            const score = data.personality.score.toFixed(1);
+            
+            document.getElementById('personalityTrait').textContent = trait;
+            document.getElementById('personalityScore').textContent = `${score}%`;
+
+            // ✨ 새로 추가된 로직입니다! ✨
+            // app.py에서 받은 result_title로 제목을 업데이트합니다.
+            document.getElementById('resultTitle').textContent = data.result_title;
+
+            // 닮은꼴 결과 표시
+            const resultsContainer = document.getElementById('similarityResults');
+            resultsContainer.innerHTML = '';
+
+            data.similar_faces.forEach((face, index) => {
+                const medal = ['🥇', '🥈', '🥉'][index];
+                const card = document.createElement('div');
+                card.className = 'similarity-card';
+                card.innerHTML = `
+                    <div class="rank-badge">${medal} ${index + 1}위</div>
+                    <div class="similarity-image-wrapper">
+                        <img src="${face.image}" alt="${face.name}" class="similarity-image">
+                    </div>
+                    <div class="similarity-info">
+                        <h3 class="celebrity-name">${face.name}</h3>
+                        <div class="similarity-score">
+                            <span class="score-number">${face.similarity.toFixed(1)}%</span>
+                            <span class="score-label">유사도</span>
+                        </div>
+                        <p class="similarity-comment">${face.comment}</p>
+                        <p class="celebrity-description">${face.description}</p>
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

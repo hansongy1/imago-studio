@@ -1,0 +1,101 @@
+{# mode_002.html #}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>면접 연습 모드 - Image Studio</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <a href="/" class="back-button">← 홈으로</a>
+            <h1>💼 면접 연습 모드</h1>
+            <p class="subtitle">AI가 당신의 표정과 감정을 실시간으로 분석해요</p>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- 웹캠 섹션 -->
+            <div class="webcam-section" id="webcamSection">
+                <div class="webcam-container">
+                    <video id="webcam" autoplay playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    
+                    <!-- 실시간 감정 오버레이 -->
+                    <div class="emotion-overlay" id="emotionOverlay" style="display: none;">
+                        <div class="emotion-badge">
+                            <span class="emotion-emoji" id="emotionEmoji">😊</span>
+                            <span class="emotion-name" id="emotionName">행복</span>
+                        </div>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="confidenceFill"></div>
+                            <span class="confidence-text" id="confidenceText">자신감: 0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-buttons">
+                    <button id="startButton" class="control-button start-button">
+                        🎬 연습 시작
+                    </button>
+                    <button id="stopButton" class="control-button stop-button" style="display: none;">
+                        ⏹️ 연습 종료
+                    </button>
+                </div>
+
+                <div class="practice-timer" id="practiceTimer" style="display: none;">
+                    <span class="timer-icon">⏱️</span>
+                    <span class="timer-text" id="timerText">00:00</span>
+                    <span class="frame-count" id="frameCount">분석 횟수: 0</span>
+                </div>
+            </div>
+
+            <!-- 로딩 -->
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loader"></div>
+                <p class="loading-text">리포트 생성 중...</p>
+            </div>
+
+            <!-- 결과 섹션 -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <!-- 종합 피드백 -->
+                <div class="feedback-card" id="feedbackCard">
+                    <div class="feedback-grade" id="feedbackGrade">A</div>
+                    <h2 class="feedback-title" id="feedbackTitle">훌륭해요!</h2>
+                    <p class="feedback-message" id="feedbackMessage"></p>
+                    <div class="confidence-summary">
+                        <span class="confidence-label">평균 자신감 점수</span>
+                        <span class="confidence-score" id="avgConfidence">0</span>
+                    </div>
+                </div>
+
+                <!-- 팁 -->
+                <div class="tips-card">
+                    <h3>💡 피드백 & 팁</h3>
+                    <ul id="tipsList"></ul>
+                </div>
+
+                <!-- 감정 그래프 -->
+                <div class="graph-card">
+                    <h3>📊 감정 변화 분석</h3>
+                    <img id="graphImage" class="graph-image">
+                </div>
+
+                <!-- 베스트 순간 -->
+                <div class="best-moments-card">
+                    <h3>✨ 가장 좋았던 순간 Top 3</h3>
+                    <div class="best-moments-grid" id="bestMoments">
+                        <!-- JavaScript로 동적 생성 -->
+                    </div>
+                </div>
+
+                <button class="retry-button" onclick="location.reload()">
+                    다시 연습하기 🔄
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

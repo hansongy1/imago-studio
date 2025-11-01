@@ -1,0 +1,696 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+    background-image: url('/static/images/minidot_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* header */
+.main-header, .page-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.main-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.back-button {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.back-button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateX(-5px);
+}
+
+
+/* 메인페이지(index.html) */
+.mode-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.mode-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.mode-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.mode1-card {
+    border-top: 5px solid #fecc6a;
+}
+
+.mode2-card {
+    border-top: 5px solid #90b48f;
+}
+
+.mode-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.mode-card h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.mode-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    color: #555;
+}
+
+.mode-button {
+    display: inline-block;
+    /* background: #fecc6a; */
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.mode-button:hover {
+    transform: scale(1.05);
+}
+
+/* 동물 닮은꼴 버튼 - 노란색/주황색 */
+.mode1-card .mode-button {
+    background: #fecc6a;
+}
+
+/* 면접 연습 버튼 - 파란색/민트색 */
+.mode2-card .mode-button {
+    background: #90b48f;
+}
+
+
+/* ===== 업로드 섹션 ===== */
+.content-wrapper {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.upload-section {
+    text-align: center;
+}
+
+.upload-box {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.upload-placeholder {
+    border: 3px dashed #ddd;
+    border-radius: 20px;
+    padding: 3rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-placeholder:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.upload-text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.upload-hint {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+#previewImage {
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.analyze-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.analyze-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+}
+
+/* ===== 로딩 ===== */
+.loading-section {
+    text-align: center;
+    padding: 3rem;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #667eea;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 2rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.loading-subtext {
+    color: #999;
+}
+
+/* ===== Mode1 결과 ===== */
+.personality-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.personality-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.personality-trait {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.personality-score {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.result-title {
+    text-align: center;
+    margin: 2rem 0;
+    color: #333;
+}
+
+.similarity-results {
+    display: grid;
+    gap: 2rem;
+}
+
+.similarity-card {
+    display: flex;
+    gap: 2rem;
+    background: #f8f9ff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    position: relative;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.similarity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.rank-badge {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.similarity-image-wrapper {
+    flex-shrink: 0;
+}
+
+.similarity-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #667eea;
+}
+
+.similarity-info {
+    flex: 1;
+}
+
+.celebrity-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.similarity-score {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.score-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.score-label {
+    color: #999;
+}
+
+.similarity-comment {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.celebrity-description {
+    color: #666;
+    font-style: italic;
+}
+
+/* ===== Mode2 웹캠 ===== */
+.webcam-section {
+    text-align: center;
+}
+
+.webcam-container {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#webcam {
+    width: 100%;
+    display: block;
+}
+
+.emotion-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+}
+
+.emotion-badge {
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.emotion-emoji {
+    font-size: 2rem;
+}
+
+.emotion-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.confidence-bar {
+    position: relative;
+    background: rgba(0,0,0,0.5);
+    height: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #4CAF50;
+    transition: width 0.5s, background 0.5s;
+}
+
+.confidence-text {
+    position: relative;
+    color: white;
+    font-weight: bold;
+    line-height: 30px;
+    z-index: 1;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.control-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.start-button {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+}
+
+.stop-button {
+    background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+    color: white;
+}
+
+.control-button:hover {
+    transform: scale(1.05);
+}
+
+.practice-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: #f8f9ff;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+.timer-icon {
+    font-size: 1.5rem;
+}
+
+.timer-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.frame-count {
+    color: #999;
+}
+
+/* ===== Mode2 결과 ===== */
+.feedback-card {
+    background: white;
+    border: 3px solid #4CAF50;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.feedback-grade {
+    position: absolute;
+    top: -30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.feedback-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.feedback-message {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.confidence-summary {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.confidence-label {
+    color: #999;
+}
+
+.confidence-score {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.tips-card {
+    background: #f8f9ff;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.tips-card h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.tips-card ul {
+    list-style: none;
+}
+
+.tips-card li {
+    padding: 0.5rem 0;
+    color: #555;
+}
+
+.graph-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.graph-card h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.graph-image {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.best-moments-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.best-moments-card h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+.best-moments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.best-moment-card {
+    background: #f8f9ff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+}
+
+.moment-rank {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.moment-score {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.moment-emotion {
+    color: #999;
+}
+
+.retry-button {
+    display: block;
+    margin: 2rem auto 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.retry-button:hover {
+    transform: scale(1.05);
+}
+
+/* ===== 푸터 ===== */
+.main-footer {
+    text-align: center;
+    color: white;
+    margin-top: 3rem;
+    opacity: 0.8;
+}
+
+.tech-stack {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .mode-selection {
+        grid-template-columns: 1fr;
+    }
+    
+    .similarity-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .similarity-image {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+    }
+}
+
+.rank-badge.category-dog {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+.rank-badge.category-cat {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.rank-badge.category-cute {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}

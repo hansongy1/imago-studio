@@ -1,0 +1,54 @@
+{# index.html #}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imago Studio</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>Imago Studio</h1>
+            <p class="subtitle">AI가 분석하는 얼굴의 세계</p>
+        </header>
+
+        <div class="mode-selection">
+            <div class="mode-card mode1-card" onclick="location.href='/mode1'">
+                <div class="mode-icon">🐶🐱</div>
+                <h2>나는 강아지상일까? 고양이상일까?</h2>
+                <p class="mode-description">
+                    CLIP AI가 당신과 닮은 귀여운 동물을 찾아드려요
+                </p>
+                <ul class="feature-list">
+                    {# <li>🐕 강아지상인지 고양이상인지 알아보기</li> #}
+                    <li>🐕 강아지상인지 고양이상인지 알아보기</li>
+                    <li>🎯 20가지 귀여운 동물과 비교</li>
+                    <li>🏆 Top 3 닮은 동물 매칭</li>
+                </ul>
+                <div class="mode-button">시작하기 →</div>
+            </div>
+
+            <div class="mode-card mode2-card" onclick="location.href='/mode2'">
+                <div class="mode-icon">💼</div>
+                <h2>면접 연습 모드</h2>
+                <p class="mode-description">
+                    DeepFace AI가 표정과 감정을 분석해드려요
+                </p>
+                <ul class="feature-list">
+                    <li>📹 실시간 표정 분석</li>
+                    <li>📊 감정 변화 그래프</li>
+                    <li>💡 맞춤형 피드백</li>
+                </ul>
+                <div class="mode-button">시작하기 →</div>
+            </div>
+        </div>
+
+        <footer class="main-footer">
+            <p>Powered by CLIP & DeepFace</p>
+            <p class="tech-stack">Flask • PyTorch • OpenCV</p>
+        </footer>
+    </div>
+</body>
+</html>

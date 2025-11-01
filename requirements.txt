@@ -1,0 +1,20 @@
+# requirements.txt
+Flask==3.0.0
+deepface==0.0.79
+opencv-python==4.8.1.78
+torch==2.1.0
+torchvision==0.16.0
+Pillow==10.1.0
+numpy==1.24.3
+matplotlib==3.8.0
+scipy==1.11.3
+tf-keras==2.15.0
+tensorflow==2.15.0
+transformers==4.35.0
+ftfy==6.1.1
+regex==2023.10.3
+
+# PS C:\Users\songyi\fourthGrade\deepLearning\Imago_studio> pip install -r requirements.txt
+# [notice] A new release of pip is available: 24.1.1 -> 25.3
+# [notice] To update, run: python.exe -m pip install --upgrade pip
+# 이렇게 뜨고 끝, requirements.txt에는 별 그게 없었어
