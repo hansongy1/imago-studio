@@ -134,18 +134,18 @@ body {
     transform: scale(1.05);
 }
 
-/* 동물 닮은꼴 버튼 - 노란색/주황색 */
+/* 강아지vs고양이 들어가기 버튼 */
 .mode1-card .mode-button {
     background: #fecc6a;
 }
 
-/* 면접 연습 버튼 - 파란색/민트색 */
+/* 면접 연습 버튼 */
 .mode2-card .mode-button {
     background: #90b48f;
 }
 
 
-/* ===== 업로드 섹션 ===== */
+/* 닮은꼴 사진 업로드 */
 .content-wrapper {
     background: white;
     border-radius: 20px;
@@ -172,7 +172,7 @@ body {
 }
 
 .upload-placeholder:hover {
-    border-color: #667eea;
+    border-color: #fecc6a;
     background: #f8f9ff;
 }
 
@@ -199,7 +199,7 @@ body {
 }
 
 .analyze-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #fecc6a;
     color: white;
     border: none;
     padding: 1rem 3rem;
@@ -223,7 +223,7 @@ body {
 
 .loader {
     border: 5px solid #f3f3f3;
-    border-top: 5px solid #667eea;
+    border-top: 5px solid #eeb1b1;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -248,7 +248,7 @@ body {
 
 /* ===== Mode1 결과 ===== */
 .personality-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #fecc6a 0%, #764ba2 100%);
     color: white;
     padding: 2rem;
     border-radius: 15px;
@@ -305,7 +305,7 @@ body {
     position: absolute;
     top: -10px;
     left: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #fecc6a 0%, #764ba2 100%);
     color: white;
     padding: 0.3rem 1rem;
     border-radius: 20px;
@@ -322,7 +322,7 @@ body {
     height: 150px;
     object-fit: cover;
     border-radius: 15px;
-    border: 3px solid #667eea;
+    border: 3px solid #fecc6a;
 }
 
 .similarity-info {
@@ -345,7 +345,7 @@ body {
 .score-number {
     font-size: 2rem;
     font-weight: bold;
-    color: #667eea;
+    color: #fecc6a;
 }
 
 .score-label {
@@ -483,17 +483,17 @@ body {
 .timer-text {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #667eea;
+    color: #90b48f;
 }
 
 .frame-count {
     color: #999;
 }
 
-/* ===== Mode2 결과 ===== */
+/* Mode2 결과 */
 .feedback-card {
     background: white;
-    border: 3px solid #4CAF50;
+    border: 3px solid #90b48f;
     border-radius: 15px;
     padding: 2rem;
     margin-bottom: 2rem;
@@ -507,7 +507,7 @@ body {
     right: 30px;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #90b48f;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -544,7 +544,7 @@ body {
 .confidence-score {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #667eea;
+    color: #90b48f;
 }
 
 .tips-card {
@@ -616,7 +616,7 @@ body {
 .moment-rank {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #667eea;
+    color: #90b48f;
     margin-bottom: 0.5rem;
 }
 
@@ -633,7 +633,7 @@ body {
 .retry-button {
     display: block;
     margin: 2rem auto 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #90b48f;
     color: white;
     border: none;
     padding: 1rem 3rem;
@@ -648,7 +648,7 @@ body {
     transform: scale(1.05);
 }
 
-/* ===== 푸터 ===== */
+/* footer */
 .main-footer {
     text-align: center;
     color: white;
@@ -661,7 +661,7 @@ body {
     margin-top: 0.5rem;
 }
 
-/* ===== 반응형 ===== */
+/* 반응형 */
 @media (max-width: 768px) {
     .main-header h1 {
         font-size: 2.5rem;

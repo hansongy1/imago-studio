@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>면접 연습 모드 - Image Studio</title>
+    <title>면접 연습 모드</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <div class="container">
         <header class="page-header">
-            <a href="/" class="back-button">← 홈으로</a>
-            <h1>💼 면접 연습 모드</h1>
-            <p class="subtitle">AI가 당신의 표정과 감정을 실시간으로 분석해요</p>
+            <a href="/" class="back-button">⇠ 홈</a>
+            <h1>면접 연습 모드</h1>
+            <p class="subtitle">당신의 표정과 감정을 실시간으로 분석해요</p>
         </header>
 
         <div class="content-wrapper">
@@ -37,10 +37,10 @@
 
                 <div class="control-buttons">
                     <button id="startButton" class="control-button start-button">
-                        🎬 연습 시작
+                        연습 시작
                     </button>
                     <button id="stopButton" class="control-button stop-button" style="display: none;">
-                        ⏹️ 연습 종료
+                        연습 종료
                     </button>
                 </div>
 
@@ -51,13 +51,13 @@
                 </div>
             </div>
 
-            <!-- 로딩 -->
+            <!-- 로딩 중 -->
             <div class="loading-section" id="loadingSection" style="display: none;">
                 <div class="loader"></div>
                 <p class="loading-text">리포트 생성 중...</p>
             </div>
 
-            <!-- 결과 섹션 -->
+            <!-- 결과 -->
             <div class="result-section" id="resultSection" style="display: none;">
                 <!-- 종합 피드백 -->
                 <div class="feedback-card" id="feedbackCard">
@@ -91,7 +91,7 @@
                 </div>
 
                 <button class="retry-button" onclick="location.reload()">
-                    다시 연습하기 🔄
+                    다시 연습하기
                 </button>
             </div>
         </div>
