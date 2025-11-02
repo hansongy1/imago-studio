@@ -62,17 +62,34 @@ if (document.getElementById('imageInput')) {
 }
 
 function displayAnimalResults(data) {
-    // 성격 분석 표시
-    const trait = data.personality.main_trait;
-    const score = data.personality.score.toFixed(1);
-    
-    document.getElementById('personalityTrait').textContent = trait;
-    document.getElementById('personalityScore').textContent = `${score}%`;
+
+    // 데이터 체크
+    if (!data) {
+        alert('분석 결과를 받지 못했습니다.');
+        console.error('받은 데이터:', data);
+        return;
+    }
+
+    // 성격 분석 표시 (있을 때만)
+    if (data.personality) {
+        const trait = data.personality.main_trait;
+        const score = data.personality.score.toFixed(1);
+        
+        document.getElementById('personalityTrait').textContent = trait;
+        document.getElementById('personalityScore').textContent = `${score}%`;
+    }
 
     // 닮은 동물 결과 표시
     const resultsContainer = document.getElementById('similarityResults');
     resultsContainer.innerHTML = '';
 
+    // similar_animals 체크 추가!
+    if (!data.similar_animals || data.similar_animals.length === 0) {
+        resultsContainer.innerHTML = '<p>동물을 찾지 못했습니다.</p>';
+        return;
+    }
+
+    // 결과 표시
     data.similar_animals.forEach((animal, index) => {
         const medal = ['🥇', '🥈', '🥉'][index];
         const card = document.createElement('div');
@@ -96,7 +113,7 @@ function displayAnimalResults(data) {
     });
 }
 
-// ===== Mode2: 면접 연습 모드 =====
+// Mode2(면접 연습)
 if (document.getElementById('webcam')) {
     let webcamStream = null;
     let isRecording = false;

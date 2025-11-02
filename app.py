@@ -60,13 +60,13 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/mode1')
+@app.route('/what-animal')
 def mode1():
     """모드 1: CLIP 닮은꼴 찾기"""
     return render_template('mode_001.html')
 
 
-@app.route('/mode2')
+@app.route('/presentation-practice')
 def mode2():
     """모드 2: DeepFace 면접 연습"""
     return render_template('mode_002.html')

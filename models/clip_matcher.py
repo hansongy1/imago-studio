@@ -6,7 +6,7 @@ import numpy as np
 from scipy.spatial.distance import cosine
 import os
 
-# CLIP 모델 로드 (싱글톤)
+# CLIP 모델 로드
 model = None
 processor = None
 
@@ -20,23 +20,6 @@ def get_clip_model():
         processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
         print("CLIP 모델 로드 완료!")
     return model, processor
-
-# def get_clip_model():
-#     """CLIP 모델 싱글톤"""
-#     global model, processor
-#     if model is None:
-#         print("CLIP 모델 로딩 중...")
-        
-#         # 1. 어디서 계산할지 정하기 (GPU가 있으면 GPU, 없으면 CPU)
-#         device = "cuda" if torch.cuda.is_available() else "cpu"
-#         print(f"CLIP 모델을 '{device}' 장치에서 실행합니다.")
-
-#         # 2. 모델을 지정된 장치로 보내기
-#         model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").to(device)
-#         processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
-
-#         print("CLIP 모델 로드 완료!")
-#     return model, processor
 
 
 def get_image_embedding(image_path):
@@ -52,62 +35,6 @@ def get_image_embedding(image_path):
     embedding = embedding / np.linalg.norm(embedding)
     return embedding
 
-# def get_image_embedding(image_path):
-#     """
-#     이미지를 CLIP 임베딩으로 변환
-    
-#     Args:
-#         image_path: 이미지 경로
-        
-#     Returns:
-#         embedding: numpy array
-#     """
-#     model, processor = get_clip_model()
-    
-#     # 이미지 로드
-#     image = Image.open(image_path).convert('RGB')
-    
-#     # 전처리
-#     inputs = processor(images=image, return_tensors="pt")
-    
-#     # 임베딩 추출
-#     with torch.no_grad():
-#         image_features = model.get_image_features(**inputs)
-    
-#     # numpy로 변환 및 정규화
-#     embedding = image_features.cpu().numpy()[0]
-#     embedding = embedding / np.linalg.norm(embedding)
-    
-#     return embedding
-
-# def get_image_embedding(image_path):
-#     """
-#     이미지를 CLIP 임베딩으로 변환
-#     """
-#     model, processor = get_clip_model()
-    
-#     # 모델이 있는 장치(device) 정보 가져오기
-#     device = model.device
-
-#     # 이미지 로드
-#     image = Image.open(image_path).convert('RGB')
-    
-#     # 전처리
-#     inputs = processor(images=image, return_tensors="pt")
-    
-#     # 3. 전처리된 이미지 데이터(pixel_values)를 모델과 같은 장치로 보내기
-#     pixel_values = inputs.pixel_values.to(device)
-    
-#     # 임베딩 추출
-#     with torch.no_grad():
-#         # 수정된 데이터로 모델 실행
-#         image_features = model.get_image_features(pixel_values=pixel_values)
-    
-#     # numpy로 변환 및 정규화
-#     embedding = image_features.cpu().numpy()[0]
-#     embedding = embedding / np.linalg.norm(embedding)
-    
-#     return embedding
 
 
 def get_text_embedding(text):
@@ -122,30 +49,6 @@ def get_text_embedding(text):
     embedding = embedding / np.linalg.norm(embedding)
     return embedding
 
-# def get_text_embedding(text):
-#     """
-#     텍스트를 CLIP 임베딩으로 변환
-    
-#     Args:
-#         text: 텍스트 설명
-        
-#     Returns:
-#         embedding: numpy array
-#     """
-#     model, processor = get_clip_model()
-    
-#     # 전처리
-#     inputs = processor(text=[text], return_tensors="pt", padding=True)
-    
-#     # 임베딩 추출
-#     with torch.no_grad():
-#         text_features = model.get_text_features(**inputs)
-    
-#     # numpy로 변환 및 정규화
-#     embedding = text_features.cpu().numpy()[0]
-#     embedding = embedding / np.linalg.norm(embedding)
-    
-#     return embedding
 
 
 # 동물 데이터베이스 - 강아지, 고양이, 귀여운 동물들!
